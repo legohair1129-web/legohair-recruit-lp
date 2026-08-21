@@ -4,6 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>LEGO HAIR GROUP | 美容師、まだ好き？</title>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1504133835651412');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1504133835651412&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -1437,16 +1455,16 @@
     そんな感じで、大丈夫です。
   </p>
   <div class="s11-ctas xs-group">
-    <a class="s11-cta line xs-child" href="https://lin.ee/7dPFevn" target="_blank" rel="noopener noreferrer">LINEで雰囲気を聞いてみる →</a>
-    <a class="s11-cta visit xs-child" href="https://lin.ee/7dPFevn" target="_blank" rel="noopener noreferrer">サロンを見に行ってみる →</a>
+    <a class="s11-cta line xs-child" href="https://lin.ee/7dPFevn" target="_blank" rel="noopener noreferrer" data-meta-cta="final_line">LINEで雰囲気を聞いてみる →</a>
+    <a class="s11-cta visit xs-child" href="https://lin.ee/7dPFevn" target="_blank" rel="noopener noreferrer" data-meta-cta="final_visit">サロンを見に行ってみる →</a>
   </div>
   <p class="s11-reassure xs-copy xs-d4">まだ何も決めてなくてOK。<br>気になることをLINEで聞いてください。</p>
 </section>
 
 <nav class="navbar">
-  <a href="https://lin.ee/7dPFevn" target="_blank" rel="noopener noreferrer"><span class="dot"></span>LINEで相談</a>
+  <a href="https://lin.ee/7dPFevn" target="_blank" rel="noopener noreferrer" data-meta-cta="fixed_line"><span class="dot"></span>LINEで相談</a>
   <div class="divider"></div>
-  <a href="https://lin.ee/7dPFevn" target="_blank" rel="noopener noreferrer">
+  <a href="https://lin.ee/7dPFevn" target="_blank" rel="noopener noreferrer" data-meta-cta="fixed_visit">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7M5 10v10h5v-6h4v6h5V10"/></svg>
     サロン見学
   </a>
@@ -1519,6 +1537,41 @@
   } catch (err) {
     showAll();
   }
+})();
+</script>
+
+<!-- Meta: 採用LINE CTA クリック計測 -->
+<script>
+(function(){
+  var params;
+  try { params = new URLSearchParams(window.location.search); } catch (e) { params = null; }
+  var utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+  var utm = {};
+  if (params) {
+    utmKeys.forEach(function(k){
+      var v = params.get(k);
+      if (v) utm[k] = v;
+    });
+  }
+
+  function track(cta){
+    if (typeof fbq !== 'function') return;
+    try {
+      fbq('track', 'Lead', {
+        content_name: 'LEGOHAIR Recruit LINE',
+        content_category: 'Recruitment'
+      });
+      var payload = { destination: 'LINE', page: 'recruit_lp', cta: cta };
+      for (var k in utm) { payload[k] = utm[k]; }
+      fbq('trackCustom', 'RecruitLineClick', payload);
+    } catch (e) {}
+  }
+
+  document.querySelectorAll('a[data-meta-cta]').forEach(function(el){
+    el.addEventListener('click', function(){
+      track(el.getAttribute('data-meta-cta'));
+    });
+  });
 })();
 </script>
 
