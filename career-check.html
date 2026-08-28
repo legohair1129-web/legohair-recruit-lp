@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>美容師キャリア現在地チェック | LEGO HAIR GROUP</title>
+<meta name="description" content="今の美容師人生、どこにいますか？10問・約30秒でわかる、美容師のためのキャリア診断です。転職を決めていなくても大丈夫。">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="美容師キャリア現在地チェック | LEGO HAIR GROUP">
+<meta property="og:description" content="今の美容師人生、どこにいますか？10問・約30秒でわかる、美容師のためのキャリア診断です。">
+<meta property="og:image" content="assets/lego-icon.png">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" type="image/png" href="assets/lego-icon.png">
+<link rel="apple-touch-icon" href="assets/lego-icon.png">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1504135836561412');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#111111; --ink-soft:rgba(17,17,17,.6); --ink-faint:rgba(17,17,17,.4);
+    --white:#FFFFFF;
+    --coral:#FF6F61; --turq:#64C7C5; --lavender:#B9A7E8; --yellow:#F4C85A;
+    --line-grn:#06C755;
+    --font-jp:'Zen Kaku Gothic New', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans CJK JP', 'Noto Sans JP', 'Yu Gothic', 'Meiryo', sans-serif;
+    --font-en:'Josefin Sans', 'Helvetica Neue', Arial, sans-serif;
+    --edge:clamp(20px,6vw,26px);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    background:
+      radial-gradient(circle at 8% 6%, rgba(180,225,240,.45), transparent 42%),
+      radial-gradient(circle at 94% 22%, rgba(248,210,220,.4), transparent 42%),
+      #fff;
+    color:var(--ink); font-family:var(--font-jp); line-height:1.7; overflow-x:hidden;
+    min-height:100svh;
+  }
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important; transition-duration:.001ms !important;}}
+
+  .wrap{max-width:480px; margin:0 auto; padding:0 var(--edge) 48px; min-height:100svh; display:flex; flex-direction:column;}
+
+  .eyebrow-en{font-family:var(--font-en); font-weight:400; font-size:11px; letter-spacing:.28em; color:var(--ink-soft);}
+
+  /* header */
+  .topbar{padding:18px 0 8px; display:flex; align-items:center; justify-content:space-between;}
+  .brand{font-family:var(--font-en); font-size:11px; letter-spacing:.18em; color:var(--ink-soft);}
+
+  /* progress */
+  .progress-zone{padding:6px 0 22px;}
+  .progress-num{font-family:var(--font-en); font-size:12px; letter-spacing:.06em; color:var(--ink-soft); margin-bottom:8px;}
+  .progress-track{height:5px; border-radius:99px; background:rgba(17,17,17,.08); overflow:hidden;}
+  .progress-fill{height:100%; border-radius:99px; background:linear-gradient(90deg, var(--turq), var(--coral)); transition:width .35s ease;}
+
+  /* screens */
+  .screen{display:none; flex:1; flex-direction:column;}
+  .screen.active{display:flex;}
+  .fade-in{animation:fadeIn .4s ease both;}
+  @keyframes fadeIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
+
+  /* intro */
+  .intro{flex:1; display:flex; flex-direction:column; justify-content:center; padding:24px 0 40px; text-align:center;}
+  .intro .eyebrow-en{display:block; margin-bottom:14px;}
+  .intro h1{font-weight:900; font-size:clamp(26px,7.4vw,32px); line-height:1.4; letter-spacing:-.01em;}
+  .intro .sub{margin-top:14px; font-size:16px; font-weight:700; color:var(--ink);}
+  .intro .meta{margin-top:10px; font-size:13px; letter-spacing:.08em; color:var(--ink-soft);}
+  .intro .reassure{margin-top:26px; font-size:13px; line-height:1.9; color:var(--ink-soft); padding:18px; background:rgba(255,255,255,.6); border:1px solid rgba(17,17,17,.08); border-radius:16px;}
+  .start-btn{
+    margin-top:32px; align-self:center; width:100%; max-width:320px;
+    background:var(--ink); color:#fff; border:none; border-radius:99px;
+    padding:17px 20px; font-family:var(--font-jp); font-weight:700; font-size:15px;
+    letter-spacing:.03em; cursor:pointer;
+    transition:transform .15s ease, opacity .15s ease;
+  }
+  .start-btn:active{transform:scale(.98); opacity:.9;}
+
+  /* question */
+  .q-wrap{flex:1; display:flex; flex-direction:column; padding-top:6px;}
+  .q-text{font-weight:700; font-size:clamp(19px,5.6vw,22px); line-height:1.55; margin-bottom:26px;}
+  .options{display:flex; flex-direction:column; gap:12px;}
+  .opt-btn{
+    text-align:left; width:100%; border:1px solid rgba(17,17,17,.12); background:#fff;
+    border-radius:16px; padding:16px 18px; font-family:var(--font-jp); font-size:14.5px;
+    font-weight:500; color:var(--ink); line-height:1.6; cursor:pointer;
+    transition:border-color .15s ease, background .15s ease, transform .1s ease;
+  }
+  .opt-btn:active{transform:scale(.98); background:rgba(100,199,197,.08); border-color:var(--turq);}
+
+  .q-nav{margin-top:28px; display:flex; justify-content:flex-start;}
+  .back-btn{
+    background:none; border:none; font-family:var(--font-jp); font-size:13px;
+    color:var(--ink-soft); cursor:pointer; padding:8px 4px; letter-spacing:.03em;
+  }
+  .back-btn:active{opacity:.6;}
+
+  /* result */
+  .result{padding-top:8px;}
+  .result-head{text-align:center; padding:8px 0 30px;}
+  .result-lead{font-size:13px; color:var(--ink-soft); font-weight:500;}
+  .result-type{
+    margin-top:8px; font-weight:900; font-size:clamp(26px,7.6vw,30px); line-height:1.4;
+  }
+  .type-chip{display:inline-block; padding:3px 4px;}
+  .result-val-lead{margin-top:22px; font-size:13px; color:var(--ink-soft); font-weight:500;}
+  .result-val{margin-top:6px; font-weight:900; font-size:22px;}
+
+  .accent-turq{color:var(--turq);}
+  .accent-coral{color:var(--coral);}
+  .accent-lavender{color:var(--lavender);}
+  .accent-yellow{color:#caa021;}
+
+  .r-section{padding:26px 0; border-top:1px solid rgba(17,17,17,.08);}
+  .r-section:first-of-type{border-top:1px solid rgba(17,17,17,.08);}
+  .r-num{font-family:var(--font-en); font-size:11px; letter-spacing:.2em; color:var(--ink-faint); margin-bottom:8px;}
+  .r-title{font-weight:700; font-size:16px; margin-bottom:12px;}
+  .r-body{font-size:14.5px; color:var(--ink); line-height:1.85;}
+  .r-body p + p{margin-top:10px;}
+  .r-list{margin-top:4px; display:flex; flex-direction:column; gap:8px;}
+  .r-list li{list-style:none; font-size:14px; padding-left:20px; position:relative; line-height:1.7;}
+  .r-list li::before{content:''; position:absolute; left:2px; top:9px; width:6px; height:6px; border-radius:50%; background:var(--turq);}
+  .lego-note{background:rgba(180,225,240,.18); border:1px solid rgba(100,199,197,.28); border-radius:16px; padding:18px; font-size:13.5px; line-height:1.85; color:var(--ink);}
+
+  /* CTA */
+  .cta-zone{padding-top:8px; display:flex; flex-direction:column; gap:12px;}
+  .cta-reassure{text-align:center; font-size:12px; color:var(--ink-soft); margin-bottom:2px; line-height:1.8;}
+  .cta-btn{
+    display:block; width:100%; text-align:center; text-decoration:none;
+    border-radius:99px; padding:17px 20px; font-family:var(--font-jp); font-weight:700; font-size:15px;
+    letter-spacing:.02em; transition:transform .15s ease, opacity .15s ease; cursor:pointer; border:none;
+  }
+  .cta-btn:active{transform:scale(.98); opacity:.92;}
+  .cta-line{background:var(--line-grn); color:#fff;}
+  .cta-secondary{background:#fff; color:var(--ink); border:1px solid rgba(17,17,17,.16);}
+  .cta-tertiary{background:none; color:var(--ink-soft); font-weight:500; font-size:13px; padding:10px;}
+
+  .footer-mark{margin-top:36px; text-align:center; font-family:var(--font-en); font-size:10px; letter-spacing:.2em; color:var(--ink-faint);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <span class="brand">LEGO HAIR GROUP</span>
+    <span class="eyebrow-en">CAREER CHECK</span>
+  </div>
+
+  <!-- progress (hidden on intro / result) -->
+  <div class="progress-zone" id="progressZone" style="display:none;">
+    <div class="progress-num" id="progressNum">1 / 10</div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:10%;"></div></div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="screen active" id="screen-intro">
+    <div class="intro fade-in">
+      <span class="eyebrow-en">HAIRDRESSER CAREER CHECK</span>
+      <h1>美容師キャリア<br>現在地チェック</h1>
+      <p class="sub">今の美容師人生、どこにいますか？</p>
+      <p class="meta">10問・約30秒</p>
+      <div class="reassure">
+        転職を決めていなくても大丈夫です。<br>
+        今の働き方や成長について、少し整理してみませんか？
+      </div>
+      <button class="start-btn" id="startBtn" type="button">診断をはじめる →</button>
+    </div>
+  </section>
+
+  <!-- QUESTION -->
+  <section class="screen" id="screen-question">
+    <div class="q-wrap fade-in" id="qWrap">
+      <p class="q-text" id="qText"></p>
+      <div class="options" id="qOptions"></div>
+      <div class="q-nav">
+        <button class="back-btn" id="backBtn" type="button">← 戻る</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="screen" id="screen-result">
+    <div class="result fade-in" id="resultRoot"></div>
+  </section>
+
+  <p class="footer-mark">LEGO HAIR GROUP</p>
+</div>
+
+<script>
+(function(){
+
+  // ---------------------------------------------------------------
+  // Data
+  // ---------------------------------------------------------------
+  var QUESTIONS = [
+    { text:'最近、美容師として一番気になることは？', options:[
+      {label:'技術をもっと磨きたい', loc:{G:2}},
+      {label:'売上や指名を伸ばしたい', loc:{S:2}},
+      {label:'働き方を整えたい', loc:{W:2}},
+      {label:'このままでいいのか迷う', loc:{T:2}}
+    ]},
+    { text:'お客様への提案について、今どう感じますか？', options:[
+      {label:'もっと似合わせ力を高めたい', loc:{G:2}},
+      {label:'提案はできるけど単価や指名につながりにくい', loc:{S:2}},
+      {label:'忙しくて十分な提案ができない', loc:{W:2}},
+      {label:'今のやり方に少し違和感がある', loc:{T:2}}
+    ]},
+    { text:'今の売上や指名に対して近い感覚は？', options:[
+      {label:'まだまだ伸ばせると思う', loc:{G:1}},
+      {label:'頑張りをもっと評価や収入につなげたい', loc:{S:2}},
+      {label:'売上よりもまず働き方を整えたい', loc:{W:2}},
+      {label:'数字を追い続けることに少し疲れている', loc:{T:1,W:1}}
+    ]},
+    { text:'今の働き方について一番近いものは？', options:[
+      {label:'忙しいけど成長実感はある', loc:{G:1}},
+      {label:'頑張りに対してもっと報酬が欲しい', loc:{S:2}},
+      {label:'少し疲れが溜まっている', loc:{W:2}},
+      {label:'この働き方を何年も続けるイメージが持てない', loc:{T:2}}
+    ]},
+    { text:'今の教育環境についてどう感じますか？', options:[
+      {label:'もっと学べる環境が欲しい', loc:{G:2}},
+      {label:'売上や指名につながる学びが欲しい', loc:{S:2}},
+      {label:'営業時間外の練習負担を減らしたい', loc:{W:2}},
+      {label:'今の教育環境にあまり魅力を感じていない', loc:{T:2}}
+    ]},
+    { text:'3年後、どうなっていたいですか？', options:[
+      {label:'技術力の高い美容師', loc:{G:2}},
+      {label:'高売上・高収入の美容師', loc:{S:2}},
+      {label:'時間にも心にも余裕のある美容師', loc:{W:2}},
+      {label:'今とは違う環境で新しい挑戦をしている', loc:{T:2}}
+    ]},
+    { text:'今の職場を10点満点で表すと？', options:[
+      {label:'8〜10点', loc:{G:1}},
+      {label:'6〜7点', loc:{S:1}},
+      {label:'4〜5点', loc:{W:1}},
+      {label:'0〜3点', loc:{T:2}}
+    ]},
+    { text:'仕事をしていて、一番うれしい瞬間は？', options:[
+      {label:'新しい技術ができるようになったとき', val:{Gr:2}},
+      {label:'お客様から「ありがとう」と言われたとき', val:{Co:2}},
+      {label:'自分の努力が結果や評価につながったとき', val:{Ac:2}},
+      {label:'仲間と一緒に何かをやり遂げたとき', val:{Cr:2}}
+    ]},
+    { text:'もし給与や休日などの条件がすべて同じなら、どんな美容室で働きたいですか？', options:[
+      {label:'とにかく技術を高められる場所', val:{Gr:2}},
+      {label:'自分の個性や得意を活かせる場所', val:{Ac:1,Gr:1}},
+      {label:'仲間と刺激し合える場所', val:{Cr:2}},
+      {label:'お客様に深く喜んでもらえる場所', val:{Co:2}}
+    ]},
+    { text:'3年後、「こうなっていたら嫌だ」と一番感じるのは？', options:[
+      {label:'技術が今とあまり変わっていない', val:{Gr:2}},
+      {label:'頑張っているのに収入が変わっていない', val:{Ac:2}},
+      {label:'毎日が忙しいだけになっている', val:{Cr:1,Co:1}},
+      {label:'美容師という仕事にワクワクしなくなっている', val:{Co:1,Gr:1}}
+    ]}
+  ];
+
+  var LOC_ORDER = ['G','S','W','T'];
+  var VAL_ORDER = ['Gr','Co','Ac','Cr'];
+
+  var LOC_INFO = {
+    G:{ name:'成長加速タイプ', accent:'accent-turq',
+      body:[
+        'あなたは、「まだまだ美容師として上手くなれる」という感覚を持っているタイプです。',
+        '技術だけでなく、似合わせ・提案・カウンセリング・デザイン力まで深められる環境と相性が良いです。'
+      ],
+      stumble:'技術を伸ばしたい気持ちはあっても、独学だけでは「なぜ似合うのか」「なぜこの提案なのか」を言語化できず、成長が頭打ちになりやすい時期です。',
+      next:['自分の得意技術を1つ決める','お客様への提案の質を振り返る','3年後にどんな美容師になりたいか言語化する'],
+      legohair:'LEGOHAIRでは、好印象プロデュースを通じて、パーソナルカラー・顔学・骨格・髪質・カウンセリング・似合わせを学び、「なぜ似合うのか」まで説明できる美容師を目指しています。'
+    },
+    S:{ name:'飛躍準備タイプ', accent:'accent-yellow',
+      body:[
+        'あなたは、すでに一定の技術や経験があり、「もっと結果につなげたい」と感じているタイプです。',
+        '努力量だけではなく、客単価・指名・次回予約・提案力・自分の強みを整理することで、次のステージに進みやすくなります。'
+      ],
+      stumble:'努力しているのに、その頑張りが売上や指名という「結果」にうまく翻訳されず、もどかしさを感じやすい時期です。',
+      next:['自分の強みメニューを言語化する','売上の構造を分解する','お客様に選ばれている理由を知る'],
+      legohair:'LEGOHAIRでは、頑張りが指名や評価としてきちんと返ってくるように、一人ひとりの個性や得意を活かせる仕組みを大切にしています。'
+    },
+    W:{ name:'働き方再設計タイプ', accent:'accent-lavender',
+      body:[
+        'あなたは、美容師を辞めたいのではなく、「この働き方のままでいいのか」と感じている可能性があります。',
+        '無理を続けるのではなく、美容師を長く続けるために、働く時間・休む時間・成長する時間を整理することが大切です。'
+      ],
+      stumble:'忙しさの中で「辞める」以外の選択肢が見えにくくなり、我慢を重ねてしまいやすい時期です。',
+      next:['今一番負担になっていることを書き出す','本当に必要な働き方を考える','3年後も続けたいと思える環境を想像する'],
+      legohair:'LEGOHAIRでは、美容師を人生の途中で終わる仕事にしないために、働き方を選べる環境づくりを大切にしています。'
+    },
+    T:{ name:'キャリア転換タイプ', accent:'accent-coral',
+      body:[
+        'あなたは、今の職場や環境に対して、少しずつ違和感が積み重なっている可能性があります。',
+        'すぐに転職する必要はありません。ただ、「今の場所に残る理由」と「環境を変える理由」を一度整理するタイミングかもしれません。'
+      ],
+      stumble:'違和感はあるものの「今すぐ辞めるほどでもない」と先延ばしにしがちで、モヤモヤだけが積み重なりやすい時期です。',
+      next:['今の職場の好きなところを書き出す','今の職場で変えたいところを書き出す','次の職場で絶対に譲れないことを整理する'],
+      legohair:'LEGOHAIRでは、美容師のキャリアは一本道じゃないと考え、完璧な人だけの職場ではない、あなたらしく働ける環境を大切にしています。'
+    }
+  };
+
+  var VAL_INFO = {
+    Gr:{ name:'成長', accent:'accent-turq',
+      body:'あなたは、新しいことができるようになること自体に喜びを感じるタイプです。成長実感がなくなると、仕事へのモチベーションも下がりやすい傾向があります。' },
+    Co:{ name:'貢献', accent:'accent-coral',
+      body:'あなたは、誰かに喜ばれることや、「ありがとう」と言われることが大きなエネルギーになるタイプです。単なる売上よりも、お客様との関係性や仕事の意味を大切にします。' },
+    Ac:{ name:'達成', accent:'accent-yellow',
+      body:'あなたは、努力が結果につながることでエネルギーが高まるタイプです。売上・指名・評価・収入など、自分の成長が数字として見える環境と相性があります。' },
+    Cr:{ name:'共創', accent:'accent-lavender',
+      body:'あなたは、一人で成果を出すより、仲間と刺激し合いながら成長することで力を発揮するタイプです。チームの空気感や人間関係を大切にします。' }
+  };
+
+  var LINE_URL = 'https://lin.ee/7dPFevn';
+  var RECRUIT_LP_URL = 'index.html';
+
+  // ---------------------------------------------------------------
+  // State
+  // ---------------------------------------------------------------
+  var current = 0; // question index 0-9
+  var answers = new Array(QUESTIONS.length).fill(null); // store chosen option object per question
+
+  var screenIntro = document.getElementById('screen-intro');
+  var screenQuestion = document.getElementById('screen-question');
+  var screenResult = document.getElementById('screen-result');
+  var progressZone = document.getElementById('progressZone');
+  var progressNum = document.getElementById('progressNum');
+  var progressFill = document.getElementById('progressFill');
+  var qText = document.getElementById('qText');
+  var qOptions = document.getElementById('qOptions');
+  var backBtn = document.getElementById('backBtn');
+  var qWrap = document.getElementById('qWrap');
+
+  function showScreen(el){
+    [screenIntro, screenQuestion, screenResult].forEach(function(s){ s.classList.remove('active'); });
+    el.classList.add('active');
+  }
+
+  function renderQuestion(){
+    showScreen(screenQuestion);
+    progressZone.style.display = 'block';
+    var q = QUESTIONS[current];
+    progressNum.textContent = (current + 1) + ' / ' + QUESTIONS.length;
+    progressFill.style.width = ((current + 1) / QUESTIONS.length * 100) + '%';
+    qText.textContent = q.text;
+    qOptions.innerHTML = '';
+    q.options.forEach(function(opt){
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'opt-btn';
+      btn.textContent = opt.label;
+      btn.addEventListener('click', function(){ selectAnswer(opt); });
+      qOptions.appendChild(btn);
+    });
+    backBtn.style.visibility = current === 0 ? 'hidden' : 'visible';
+    qWrap.classList.remove('fade-in');
+    void qWrap.offsetWidth;
+    qWrap.classList.add('fade-in');
+  }
+
+  function selectAnswer(opt){
+    answers[current] = opt;
+    if(current < QUESTIONS.length - 1){
+      current += 1;
+      renderQuestion();
+    } else {
+      trackEvent('CareerCheckComplete');
+      renderResult();
+    }
+  }
+
+  backBtn.addEventListener('click', function(){
+    if(current === 0){
+      progressZone.style.display = 'none';
+      showScreen(screenIntro);
+    } else {
+      current -= 1;
+      renderQuestion();
+    }
+  });
+
+  document.getElementById('startBtn').addEventListener('click', function(){
+    trackEvent('CareerCheckStart');
+    current = 0;
+    renderQuestion();
+  });
+
+  // ---------------------------------------------------------------
+  // Scoring
+  // ---------------------------------------------------------------
+  function computeResult(){
+    var loc = {G:0,S:0,W:0,T:0};
+    var val = {Gr:0,Co:0,Ac:0,Cr:0};
+    var valByQ = {}; // question index -> {Gr,Co,Ac,Cr} contribution (only for Q8-Q10, idx 7-9)
+
+    answers.forEach(function(opt, idx){
+      if(!opt) return;
+      if(opt.loc){
+        Object.keys(opt.loc).forEach(function(k){ loc[k] += opt.loc[k]; });
+      }
+      if(opt.val){
+        var contrib = {Gr:0,Co:0,Ac:0,Cr:0};
+        Object.keys(opt.val).forEach(function(k){ val[k] += opt.val[k]; contrib[k] = opt.val[k]; });
+        valByQ[idx] = contrib;
+      }
+    });
+
+    var locType = pickTop(loc, LOC_ORDER);
+    var valType = pickTopVal(val, valByQ);
+
+    return { locType: locType, valType: valType };
+  }
+
+  function pickTop(scores, order){
+    var max = -Infinity;
+    order.forEach(function(k){ if(scores[k] > max) max = scores[k]; });
+    var tied = order.filter(function(k){ return scores[k] === max; });
+    if(tied.length === 1) return tied[0];
+    // fallback: fixed priority order (matches A/B/C/D order in the questionnaire)
+    return tied[0];
+  }
+
+  function pickTopVal(scores, valByQ){
+    var max = -Infinity;
+    VAL_ORDER.forEach(function(k){ if(scores[k] > max) max = scores[k]; });
+    var tied = VAL_ORDER.filter(function(k){ return scores[k] === max; });
+    if(tied.length === 1) return tied[0];
+
+    // tie-break priority: Q10 (idx 9) -> Q9 (idx 8) -> Q8 (idx 7)
+    var tieBreakQs = [9, 8, 7];
+    for(var i = 0; i < tieBreakQs.length; i++){
+      var qIdx = tieBreakQs[i];
+      var contrib = valByQ[qIdx];
+      if(!contrib) continue;
+      var qMax = -Infinity;
+      tied.forEach(function(k){ if(contrib[k] > qMax) qMax = contrib[k]; });
+      var qTied = tied.filter(function(k){ return contrib[k] === qMax; });
+      if(qTied.length === 1) return qTied[0];
+      tied = qTied;
+    }
+    // final fallback: fixed priority order (成長・貢献・達成・共創)
+    return tied[0];
+  }
+
+  // ---------------------------------------------------------------
+  // Result render
+  // ---------------------------------------------------------------
+  var resultRoot = document.getElementById('resultRoot');
+
+  function renderResult(){
+    progressZone.style.display = 'none';
+    var r = computeResult();
+    var loc = LOC_INFO[r.locType];
+    var val = VAL_INFO[r.valType];
+
+    var html = '';
+    html += '<div class="result-head">';
+    html += '  <p class="result-lead">あなたは</p>';
+    html += '  <h2 class="result-type"><span class="type-chip ' + loc.accent + '">' + loc.name + '</span></h2>';
+    html += '  <p class="result-val-lead">そして、あなたが大切にしているものは</p>';
+    html += '  <p class="result-val ' + val.accent + '">' + val.name + '</p>';
+    html += '</div>';
+
+    html += '<div class="r-section"><div class="r-num">01</div><div class="r-title">今のあなた</div><div class="r-body">' +
+      loc.body.map(function(p){ return '<p>' + p + '</p>'; }).join('') + '</div></div>';
+
+    html += '<div class="r-section"><div class="r-num">02</div><div class="r-title">あなたが大切にしている価値観</div><div class="r-body"><p>' + val.body + '</p></div></div>';
+
+    html += '<div class="r-section"><div class="r-num">03</div><div class="r-title">今つまずきやすいポイント</div><div class="r-body"><p>' + loc.stumble + '</p></div></div>';
+
+    html += '<div class="r-section"><div class="r-num">04</div><div class="r-title">次の一歩</div><ul class="r-list">' +
+      loc.next.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul></div>';
+
+    html += '<div class="r-section"><div class="r-num">05</div><div class="r-title">LEGOHAIRとの接点</div><div class="lego-note">' + loc.legohair + '</div></div>';
+
+    html += '<div class="cta-zone">';
+    html += '  <a class="cta-btn cta-line" id="lineCta" href="' + LINE_URL + '" target="_blank" rel="noopener noreferrer" data-meta-cta="career_check_line">この診断結果をLINEに保存する</a>';
+    html += '  <p class="cta-reassure">転職を決めていなくても大丈夫です。</p>';
+    html += '  <a class="cta-btn cta-secondary" id="lpCta" href="' + RECRUIT_LP_URL + '">LEGOHAIRの働き方を見てみる</a>';
+    html += '  <button class="cta-btn cta-tertiary" id="retryBtn" type="button">もう一度診断する</button>';
+    html += '</div>';
+
+    resultRoot.innerHTML = html;
+    showScreen(screenResult);
+
+    document.getElementById('lineCta').addEventListener('click', function(){
+      trackLineClick(r);
+    });
+    document.getElementById('lpCta').addEventListener('click', function(){
+      trackEvent('CareerCheckToRecruitLP', { loc_type: r.locType, val_type: r.valType });
+    });
+    document.getElementById('retryBtn').addEventListener('click', function(){
+      answers = new Array(QUESTIONS.length).fill(null);
+      current = 0;
+      renderQuestion();
+    });
+
+    window.scrollTo(0, 0);
+  }
+
+  // ---------------------------------------------------------------
+  // Tracking (reuses existing Meta Pixel; no new analytics stack)
+  // ---------------------------------------------------------------
+  function trackEvent(name, payload){
+    if(typeof fbq !== 'function') return;
+    try { fbq('trackCustom', name, payload || {}); } catch(e){}
+  }
+
+  function trackLineClick(r){
+    if(typeof fbq !== 'function') return;
+    // 主イベント（Meta広告最適化用）：Lead は求人LPと同じく必ず独立して発火
+    try {
+      fbq('track', 'Lead', {
+        content_name: 'LEGOHAIR Career Check LINE',
+        content_category: 'Recruitment'
+      });
+    } catch(e){}
+    // 分析用の副イベント：求人LPと同じ RecruitLineClick を再利用
+    try {
+      fbq('trackCustom', 'RecruitLineClick', {
+        destination: 'LINE',
+        page: 'career_check',
+        cta: 'career_check_line',
+        loc_type: r.locType,
+        val_type: r.valType
+      });
+    } catch(e){}
+  }
+
+})();
+</script>
+</body>
+</html>
