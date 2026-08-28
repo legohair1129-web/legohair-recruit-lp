@@ -287,7 +287,8 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
       ],
       stumble:'技術を伸ばしたい気持ちはあっても、独学だけでは「なぜ似合うのか」「なぜこの提案なのか」を言語化できず、成長が頭打ちになりやすい時期です。',
       next:['自分の得意技術を1つ決める','お客様への提案の質を振り返る','3年後にどんな美容師になりたいか言語化する'],
-      legohair:'LEGOHAIRでは、好印象プロデュースを通じて、パーソナルカラー・顔学・骨格・髪質・カウンセリング・似合わせを学び、「なぜ似合うのか」まで説明できる美容師を目指しています。'
+      legohair:'LEGOHAIRでは、好印象プロデュースを通じて、パーソナルカラー・顔学・骨格・髪質・カウンセリング・似合わせを学び、「なぜ似合うのか」まで説明できる美容師を目指しています。',
+      ctaHref:'https://kouinsho-produce.vercel.app', ctaLabel:'提案力・似合わせをもっと学びたい →', ctaTarget:'kouinsho'
     },
     S:{ name:'飛躍準備タイプ', accent:'accent-yellow',
       body:[
@@ -296,7 +297,8 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
       ],
       stumble:'努力しているのに、その頑張りが売上や指名という「結果」にうまく翻訳されず、もどかしさを感じやすい時期です。',
       next:['自分の強みメニューを言語化する','売上の構造を分解する','お客様に選ばれている理由を知る'],
-      legohair:'LEGOHAIRでは、頑張りが指名や評価としてきちんと返ってくるように、一人ひとりの個性や得意を活かせる仕組みを大切にしています。'
+      legohair:'LEGOHAIRでは、頑張りが指名や評価としてきちんと返ってくるように、一人ひとりの個性や得意を活かせる仕組みを大切にしています。',
+      ctaHref:'https://salon-lh.com/lp/150man-program.html', ctaLabel:'売上・指名をもっと伸ばしたい →', ctaTarget:'150man'
     },
     W:{ name:'働き方再設計タイプ', accent:'accent-lavender',
       body:[
@@ -305,7 +307,8 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
       ],
       stumble:'忙しさの中で「辞める」以外の選択肢が見えにくくなり、我慢を重ねてしまいやすい時期です。',
       next:['今一番負担になっていることを書き出す','本当に必要な働き方を考える','3年後も続けたいと思える環境を想像する'],
-      legohair:'LEGOHAIRでは、美容師を人生の途中で終わる仕事にしないために、働き方を選べる環境づくりを大切にしています。'
+      legohair:'LEGOHAIRでは、美容師を人生の途中で終わる仕事にしないために、働き方を選べる環境づくりを大切にしています。',
+      ctaHref:'https://legohair-recruit-lp.vercel.app/semi-employee.html', ctaLabel:'準社員制度を詳しく見る →', ctaTarget:'semi_employee'
     },
     T:{ name:'キャリア転換タイプ', accent:'accent-coral',
       body:[
@@ -314,7 +317,8 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
       ],
       stumble:'違和感はあるものの「今すぐ辞めるほどでもない」と先延ばしにしがちで、モヤモヤだけが積み重なりやすい時期です。',
       next:['今の職場の好きなところを書き出す','今の職場で変えたいところを書き出す','次の職場で絶対に譲れないことを整理する'],
-      legohair:'LEGOHAIRでは、美容師のキャリアは一本道じゃないと考え、完璧な人だけの職場ではない、あなたらしく働ける環境を大切にしています。'
+      legohair:'LEGOHAIRでは、美容師のキャリアは一本道じゃないと考え、完璧な人だけの職場ではない、あなたらしく働ける環境を大切にしています。',
+      ctaHref:'https://legohair-recruit-lp.vercel.app/semi-employee.html', ctaLabel:'準社員制度を詳しく見る →', ctaTarget:'semi_employee'
     }
   };
 
@@ -330,7 +334,6 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
   };
 
   var LINE_URL = 'https://lin.ee/7dPFevn';
-  var RECRUIT_LP_URL = 'index.html';
 
   // ---------------------------------------------------------------
   // State
@@ -494,7 +497,7 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
     html += '<div class="cta-zone">';
     html += '  <a class="cta-btn cta-line" id="lineCta" href="' + LINE_URL + '" target="_blank" rel="noopener noreferrer" data-meta-cta="career_check_line">この診断結果をLINEに保存する</a>';
     html += '  <p class="cta-reassure">転職を決めていなくても大丈夫です。</p>';
-    html += '  <a class="cta-btn cta-secondary" id="lpCta" href="' + RECRUIT_LP_URL + '">LEGOHAIRの働き方を見てみる</a>';
+    html += '  <a class="cta-btn cta-secondary" id="lpCta" href="' + loc.ctaHref + '">' + loc.ctaLabel + '</a>';
     html += '  <button class="cta-btn cta-tertiary" id="retryBtn" type="button">もう一度診断する</button>';
     html += '</div>';
 
@@ -505,7 +508,7 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
       trackLineClick(r);
     });
     document.getElementById('lpCta').addEventListener('click', function(){
-      trackEvent('CareerCheckToRecruitLP', { loc_type: r.locType, val_type: r.valType });
+      trackEvent('CareerCheckToRecruitLP', { loc_type: r.locType, val_type: r.valType, target: loc.ctaTarget });
     });
     document.getElementById('retryBtn').addEventListener('click', function(){
       answers = new Array(QUESTIONS.length).fill(null);
