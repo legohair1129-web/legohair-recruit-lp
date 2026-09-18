@@ -127,6 +127,42 @@ to{opacity:1;transform:none}
 .navbar .btn{font-size:13px}
 }
 
+
+/* Immersive cover: real salon behind copy, uncropped team photos in front. */
+.hero{padding:0;background:#fff;isolation:isolate;overflow:hidden}
+.hero-stage{height:820px;height:clamp(790px,100svh,900px);position:relative}
+.hero-backdrop{position:absolute;inset:0 0 100px;overflow:hidden;background:#4a4945}
+.hero-backdrop img{height:100%;width:100%;object-fit:cover;object-position:55% center;animation:cover-drift 16s ease-in-out infinite alternate}
+.hero-backdrop:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,24,.18),rgba(20,22,24,.22) 18%,rgba(20,22,24,.58) 48%,rgba(20,22,24,.36) 65%,rgba(255,255,255,.9) 96%,#fff)}
+.hero-top{position:absolute;left:var(--edge);right:var(--edge);top:22px;z-index:5;color:#fff;align-items:center}
+.hero-top>span{font-size:18px;letter-spacing:.12em}
+.hero-top a{font-size:13px;padding:7px 12px;border:1px solid #ffffff80;border-radius:30px;background:#25252530}
+.hero-copy{position:absolute;z-index:3;top:90px;left:0;right:0;padding:0 var(--edge);color:#fff;animation:cover-rise 1.3s ease-out both}
+.hero-label{font-size:13px;letter-spacing:.07em;color:#fff;margin-bottom:22px}
+.hero h1{font-size:clamp(36px,10vw,48px);letter-spacing:-.045em;line-height:1.45;text-shadow:0 2px 18px #0003}
+.hero h1 .hero-line{display:block}
+.hero-sub{font-size:15px;line-height:1.9;margin-top:20px;color:#fff;text-shadow:0 1px 8px #0006}
+.hero-team{position:absolute;z-index:4;left:8%;right:5%;bottom:90px;animation:cover-rise 1.6s .15s ease-out both}
+.hero-team:before{content:'';position:absolute;inset:7px 4px 47px -10px;transform:rotate(-5deg);background:linear-gradient(120deg,#f4dbe4,#dceef2);box-shadow:0 10px 30px #302c3620}
+.hero-team-frames{position:relative;aspect-ratio:3/2;transform:rotate(2deg);background:#eff4f5;box-shadow:0 16px 40px #28232b20;border:5px solid #fff}
+.hero-team-frame{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;pointer-events:none}
+.hero-team-frame.is-active{opacity:1}
+.hero-team-frame img{width:100%;height:100%;object-fit:contain}
+.hero-team-note{position:relative;margin-top:16px;font-size:14px;letter-spacing:.06em;font-weight:500;color:#373339}
+.hero-controls{position:relative;display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:12px}
+.hero-dots{display:flex;gap:0}
+.hero-dot{width:36px;height:36px;display:grid;place-items:center;background:none;border:0}
+.hero-dot:before{content:'';width:6px;height:6px;border-radius:50%;background:#b9b7bc;transition:width .3s,background .3s}
+.hero-dot[aria-pressed="true"]:before{width:22px;border-radius:8px;background:#554e58}
+.hero-toggle{border:0;background:none;color:#514b54;font-size:13px;min-height:36px;padding:4px 8px;text-decoration:underline;text-underline-offset:4px}
+.hero.is-paused .hero-backdrop img{animation-play-state:paused}
+.hero a:focus-visible,.hero button:focus-visible{outline:3px solid #b85f7c;outline-offset:3px}
+@keyframes cover-drift{from{transform:scale(1.02) translateY(0)}to{transform:scale(1.08) translateY(-8px)}}
+@keyframes cover-rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:600px){.hero-stage{height:930px;max-height:none}.hero-copy{top:85px}.hero-team{bottom:90px}}
+@media(max-width:350px){.hero-stage{height:770px}.hero-copy{top:85px}.hero h1{font-size:36px}.hero-label{font-size:12px}.hero-team{bottom:90px}.hero-sub{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.hero-backdrop img,.hero-copy,.hero-team{animation:none!important}.hero-team-frame{transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -147,15 +183,28 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
 /></noscript>
 <a class="skip" href="#main">採用情報へ進む</a>
-<header class="hero wash">
+<header class="hero" aria-label="LEGOHAIRで働く人と空間">
+<div class="hero-stage">
+  <div class="hero-backdrop"><img src="assets/hero-salon.jpeg" width="1536" height="1075" fetchpriority="high" decoding="async" alt="木の天井と半個室のセット面が広がるmeuche…legoの店内"></div>
   <div class="hero-top"><span>LEGOHAIR</span><a href="#recruit">募集要項</a></div>
-  <div class="hero-photo"><img src="assets/meuche-exterior-main-web.jpg" width="1400" height="980" fetchpriority="high" decoding="async" alt="庭に囲まれたmeuche…legoの白い外観"></div>
-  <div class="hero-copy reveal">
+  <div class="hero-copy">
     <p class="hero-label">中途スタイリスト・アシスタント募集</p>
-    <h1><span>美容師を、</span><span>本当に価値のある<br>仕事に。</span></h1>
-    <p class="hero-sub">一人ひとりに向き合い、<br>「あなたにお願いしたい」と<br>選ばれる美容師へ。</p>
-    <p class="hero-sub">半個室の落ち着いた空間と、<br>似合わせを深める学び。</p>
+    <h1><span class="hero-line">美容師を、</span><span class="hero-line">本当に価値のある</span><span class="hero-line">仕事に。</span></h1>
+    <p class="hero-sub">一人ひとりに向き合い、<br>「あなたにお願いしたい」と選ばれる美容師へ。</p>
   </div>
+  <div class="hero-team" role="region" aria-label="LEGOHAIRのスタッフ写真">
+    <div class="hero-team-frames">
+      <div class="hero-team-frame is-active" aria-hidden="false"><img src="assets/hero-team-01.jpeg" width="1536" height="1024" decoding="async" alt="明るい室内で笑顔を見せる4人のスタッフ"></div>
+      <div class="hero-team-frame" aria-hidden="true"><img src="assets/hero-team-02.jpeg" width="1536" height="1024" loading="lazy" decoding="async" alt="手を広げて並ぶ3人のスタッフ"></div>
+      <div class="hero-team-frame" aria-hidden="true"><img src="assets/hero-team-03.jpeg" width="1536" height="1024" loading="lazy" decoding="async" alt="笑顔でポーズをとる3人のスタッフ"></div>
+    </div>
+    <p class="hero-team-note">この空間で、この仲間と。</p>
+    <div class="hero-controls" hidden>
+      <div class="hero-dots"><button class="hero-dot" type="button" aria-label="スタッフ写真1" aria-pressed="true"></button><button class="hero-dot" type="button" aria-label="スタッフ写真2" aria-pressed="false"></button><button class="hero-dot" type="button" aria-label="スタッフ写真3" aria-pressed="false"></button></div>
+      <button class="hero-toggle" type="button">動きを止める</button>
+    </div>
+  </div>
+</div>
 </header>
 <main id="main">
 <div class="quick">
@@ -284,6 +333,27 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
   document.querySelectorAll('[data-section]').forEach(function(section){observer.observe(section);});
 })();
 </script>
+<script>
+(function(){
+  var hero=document.querySelector('.hero');
+  var frames=Array.from(hero.querySelectorAll('.hero-team-frame'));
+  var dots=Array.from(hero.querySelectorAll('.hero-dot'));
+  var toggle=hero.querySelector('.hero-toggle');
+  var motion=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var paused=motion.matches || !!(navigator.connection && navigator.connection.saveData);
+  var visible=true, index=0, timer;
+  function show(i){index=i;frames.forEach(function(frame,n){frame.classList.toggle('is-active',n===index);frame.setAttribute('aria-hidden',String(n!==index));});dots.forEach(function(dot,n){dot.setAttribute('aria-pressed',String(n===index));});}
+  function sync(){clearInterval(timer);hero.classList.toggle('is-paused',paused || !visible || document.hidden);toggle.textContent=paused?'動きを再開する':'動きを止める';if(!paused && visible && !document.hidden){timer=setInterval(function(){show((index+1)%frames.length);},6500);}}
+  dots.forEach(function(dot,n){dot.addEventListener('click',function(){show(n);sync();});});
+  toggle.addEventListener('click',function(){paused=!paused;sync();});
+  document.addEventListener('visibilitychange',sync);
+  function preference(){paused=motion.matches;sync();}
+  if(motion.addEventListener)motion.addEventListener('change',preference);
+  if('IntersectionObserver' in window){new IntersectionObserver(function(entries){visible=entries[0].isIntersecting;sync();}).observe(hero);}
+  hero.querySelector('.hero-controls').hidden=false;sync();
+})();
+</script>
+
 <!-- Meta: 採用LINE CTA クリック計測 -->
 <script>
 (function(){
