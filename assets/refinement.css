@@ -16,6 +16,7 @@ body{line-height:2}h2{font-weight:400;letter-spacing:.065em;line-height:1.7}.kic
 .working-life .numbers .metric-value{font-family:var(--number-font);font-size:clamp(42px,4.7vw,70px);font-weight:600;font-variant-numeric:lining-nums tabular-nums;line-height:1.2;letter-spacing:-.025em;color:var(--number-ink)}
 .working-life .numbers .metric-salary{font-size:clamp(32px,3.5vw,54px)}
 .working-life .numbers .salary-range,.stylist-salary .salary-range{display:block;font:inherit;color:inherit;white-space:nowrap;overflow-wrap:normal;word-break:keep-all}
+.working-life .numbers .salary-extras,.stylist-salary .salary-extras{display:block;margin-top:10px;font:500 16px/1.8 var(--sans);letter-spacing:0;color:var(--number-ink);white-space:nowrap}
 .working-life .numbers .metric-en{font:500 14px/1.6 var(--number-font);letter-spacing:.1em;margin:14px 0 8px;color:var(--muted)}
 .working-life .numbers>div>span:not(.metric-en){font-size:14px;line-height:1.9}
 #recruit h2{margin-bottom:0;line-break:strict;word-break:normal;overflow-wrap:normal}
