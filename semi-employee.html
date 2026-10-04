@@ -18,6 +18,7 @@
 
 <!-- Meta Pixel Code -->
 <script>
+if (location.hostname === "legohair-recruit-lp.vercel.app") {
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -28,6 +29,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1504135836561412');
 fbq('track', 'PageView');
+}
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
@@ -190,11 +192,12 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
   .fixed-bar .dot{width:6px; height:6px; border-radius:50%; background:#fff; animation:dotpulse 1.6s ease-in-out infinite;}
   @keyframes dotpulse{ 0%,100%{opacity:.4;} 50%{opacity:1;} }
 </style>
+<link rel="stylesheet" href="assets/editorial-secondary.css">
 </head>
 <body>
 
 <div class="topbar">
-  <span class="brand">LEGO HAIR GROUP</span>
+  <a class="brand" href="index.html">LEGOHAIR</a>
   <span class="eyebrow-en">SEMI-EMPLOYEE</span>
 </div>
 
@@ -204,7 +207,7 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
     <span class="eyebrow-en">FOR YOUR LIFE, FOR YOUR CAREER.</span>
     <h1>美容師を、<br><span class="accent">諦めなくていい。</span></h1>
     <p class="sub">結婚、出産、子育て。<br>人生が変われば、働き方も変わる。<br><b>でも、美容師を辞める必要はありません。</b></p>
-    <div class="cta-zone">
+    <img class="secondary-photo" src="assets/editorial/4872-960.webp" srcset="assets/editorial/4872-480.webp 480w, assets/editorial/4872-960.webp 960w" sizes="(max-width:700px) 90vw, 680px" width="960" height="640" alt="笑顔を交わす二人" fetchpriority="high"><div class="cta-zone">
       <a class="cta-btn cta-outline" href="#feelings">準社員制度について詳しく見る ↓</a>
     </div>
     <p class="reassure">転職を決めていなくても大丈夫です。<br>まずはLEGOHAIRの働き方を知ってください。</p>
@@ -307,7 +310,7 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
       <h3 style="margin-top:10px;">まだ、自分がどんな働き方を<br>求めているのか分からない。</h3>
       <p style="margin-top:12px;">そんな人は、美容師キャリア現在地チェックから始めてみませんか。</p>
       <div style="margin-top:20px;">
-        <a class="cta-btn cta-outline" href="https://legohair-recruit-lp.vercel.app/career-check.html">30秒で現在地をチェックする →</a>
+        <a class="cta-btn cta-outline" href="career-check.html">30秒で現在地をチェックする →</a>
       </div>
     </div>
   </div>
@@ -381,5 +384,6 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
 })();
 </script>
 
+<div class="wrap" style="min-height:0;padding-bottom:30px"><a class="back-to-lp" href="index.html">← LEGOHAIR 採用サイトへ</a></div>
 </body>
 </html>

@@ -18,6 +18,7 @@
 
 <!-- Meta Pixel Code -->
 <script>
+if (location.hostname === "legohair-recruit-lp.vercel.app") {
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -28,6 +29,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1504135836561412');
 fbq('track', 'PageView');
+}
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
@@ -157,13 +159,14 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
 
   .footer-mark{margin-top:36px; text-align:center; font-family:var(--font-en); font-size:10px; letter-spacing:.2em; color:var(--ink-faint);}
 </style>
+<link rel="stylesheet" href="assets/editorial-secondary.css">
 </head>
 <body>
 
 <div class="wrap">
 
   <div class="topbar">
-    <span class="brand">LEGO HAIR GROUP</span>
+    <a class="brand" href="index.html">LEGOHAIR</a>
     <span class="eyebrow-en">CAREER CHECK</span>
   </div>
 
@@ -308,7 +311,7 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
       stumble:'忙しさの中で「辞める」以外の選択肢が見えにくくなり、我慢を重ねてしまいやすい時期です。',
       next:['今一番負担になっていることを書き出す','本当に必要な働き方を考える','3年後も続けたいと思える環境を想像する'],
       legohair:'LEGOHAIRでは、美容師を人生の途中で終わる仕事にしないために、働き方を選べる環境づくりを大切にしています。',
-      ctaHref:'https://legohair-recruit-lp.vercel.app/semi-employee.html', ctaLabel:'準社員制度を詳しく見る →', ctaTarget:'semi_employee'
+      ctaHref:'semi-employee.html', ctaLabel:'準社員制度を詳しく見る →', ctaTarget:'semi_employee'
     },
     T:{ name:'キャリア転換タイプ', accent:'accent-coral',
       body:[
@@ -318,7 +321,7 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
       stumble:'違和感はあるものの「今すぐ辞めるほどでもない」と先延ばしにしがちで、モヤモヤだけが積み重なりやすい時期です。',
       next:['今の職場の好きなところを書き出す','今の職場で変えたいところを書き出す','次の職場で絶対に譲れないことを整理する'],
       legohair:'LEGOHAIRでは、美容師のキャリアは一本道じゃないと考え、完璧な人だけの職場ではない、あなたらしく働ける環境を大切にしています。',
-      ctaHref:'https://legohair-recruit-lp.vercel.app/semi-employee.html', ctaLabel:'準社員制度を詳しく見る →', ctaTarget:'semi_employee'
+      ctaHref:'semi-employee.html', ctaLabel:'準社員制度を詳しく見る →', ctaTarget:'semi_employee'
     }
   };
 
@@ -550,5 +553,6 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
 
 })();
 </script>
+<div class="wrap" style="min-height:0;padding-bottom:30px"><a class="back-to-lp" href="index.html">← LEGOHAIR 採用サイトへ</a></div>
 </body>
 </html>
