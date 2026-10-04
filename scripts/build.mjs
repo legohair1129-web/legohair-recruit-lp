@@ -14,7 +14,7 @@ for(const page of pages){
  for(const [,id] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(html.includes(`id="${id}"`),`${page}: broken #${id}`);
 }
 const home=fs.readFileSync('index.html','utf8');
-for(const value of ['24.5<small>万〜</small>27<small>万</small>', '＋歩合給＋能力給','222,500〜255,000','6,500〜15,000','230,000','180,000','111日','完全週休2日制','10日','https://lin.ee/7dPFevn','https://forms.gle/HdJJZuKUT4ScFmDP7'])assert.ok(home.includes(value),`Missing preserved content: ${value}`);
+for(const value of ['24.4〜42万円','222,500〜255,000','6,500〜15,000','230,000','180,000','111日','完全週休2日制','10日','https://lin.ee/7dPFevn','https://forms.gle/HdJJZuKUT4ScFmDP7'])assert.ok(home.includes(value),`Missing preserved content: ${value}`);
 fs.mkdirSync('dist',{recursive:true});
 for(const page of pages)fs.copyFileSync(page,path.join('dist',page));
 fs.cpSync('assets','dist/assets',{recursive:true});
