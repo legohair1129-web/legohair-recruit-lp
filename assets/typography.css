@@ -1,0 +1,20 @@
+/* Typeface families match salon-lh.com; retain the LP's layout and colors. */
+:root {
+  --sans: "游ゴシック", "Yu Gothic", "メイリオ", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+  --serif: var(--sans);
+  --font-jp: var(--sans);
+  --font-en: "Montserrat", sans-serif;
+  --number-font: "Montserrat", var(--sans);
+}
+body { font-family: var(--sans); font-weight: 500; font-feature-settings: "palt" 1; font-kerning: auto; }
+h1, h2, h3, h4, h5, h6 { font-family: var(--sans); }
+button, input, select, textarea { font-family: inherit; }
+.brand, .salon-info h3, .store h3 { font-family: "Cormorant Garamond", var(--sans); font-weight: 600; }
+.method dt, .numbers .metric-en, .button .cta-en { font-family: var(--font-en); }
+.role .role-salary { font-size: 38px; line-height: 1.3; }
+.role-salary .salary-range { display: block; font: inherit; color: inherit; white-space: nowrap; }
+.role-salary .salary-extras { display: block; margin-top: 10px; font: 500 16px/1.8 var(--sans); letter-spacing: 0; color: var(--number-ink); }
+@media (max-width: 700px) {
+  .role .role-salary { font-size: clamp(30px, 9.3vw, 40px); }
+  .growth p { font-size: clamp(20px, 5.6vw, 28px); }
+}
