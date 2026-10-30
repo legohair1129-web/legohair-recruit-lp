@@ -20,3 +20,4 @@
 @media(min-width:721px){.hero-main figcaption{right:24%;bottom:12px}.growth-head h2{font-size:clamp(36px,4.3vw,61px)}}
 @media(max-width:720px){.growth-head h2{font-size:35px}}
 @media(max-width:720px){.people-lesson{margin-top:24px}.people-voice{margin-top:22px}.anchor-alias{display:block;position:absolute;top:0;left:0;width:1px;height:1px;pointer-events:none}}
+@media(max-width:720px){.creative-full img{object-position:100% center}}
