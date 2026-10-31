@@ -19,6 +19,11 @@ const ids=[...home.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]);assert.equal(ids.le
 assert.equal((home.match(/<section\b/g)||[]).length,8,'Eight distinct sections');
 assert.ok(!home.includes('fbevents.js'),'Preview must not load advertising pixels');
 fs.mkdirSync('dist',{recursive:true});
-for(const page of pages)fs.copyFileSync(page,path.join('dist',page));
+for(const page of pages){
+ let html=fs.readFileSync(page,'utf8');
+ // Keep draft previews out of search while allowing the approved production LP to be indexed.
+ if(process.env.VERCEL_ENV==='production')html=html.replace('<meta name="robots" content="noindex,nofollow">','');
+ fs.writeFileSync(path.join('dist',page),html);
+}
 fs.cpSync('assets','dist/assets',{recursive:true});
 console.log('Build OK: 3 pages; 8 main sections; local resources, anchors, unique IDs, recruitment content.');
