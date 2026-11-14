@@ -362,13 +362,7 @@ src="https://www.facebook.com/tr?id=1504135836561412&ev=PageView&noscript=1"
   function track(cta){
     if (typeof fbq !== 'function') return;
 
-    // 主イベント（Meta広告最適化用）：Lead は必ず独立して発火させる
-    try {
-      fbq('track', 'Lead', {
-        content_name: 'LEGOHAIR Recruit LINE',
-        content_category: 'Recruitment'
-      });
-    } catch (e) {}
+    // A destination click is not a completed inquiry.
 
     // 分析用の副イベント：既存の採用LPと同じ RecruitLineClick を再利用
     try {
