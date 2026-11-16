@@ -33,6 +33,7 @@
 .course-number { font: 500 17px/34px var(--en); color: #756440; }
 .stylist-course .course-number { color: #506a5c; }
 .curriculum-steps h4 { font-size: 17px; font-weight: 600; line-height: 1.7; margin: 0; display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px 12px; }
+.curriculum-steps h4 .course-line { flex-basis: 100%; }
 .curriculum-steps h4 strong { font: 500 40px/1.2 var(--en); white-space: nowrap; color: #675737; }
 .stylist-course .curriculum-steps h4 strong { color: #476454; }
 .curriculum-steps h4 strong span { font: 500 15px/1.7 var(--sans); padding-left: 4px; }
