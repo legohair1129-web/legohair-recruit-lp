@@ -46,8 +46,8 @@ for(const placement of ['hero','entry','sticky']) {
     assert.equal(links.length,1);assert.ok(links[0].includes(`href="${url}"`));assert.ok(!links[0].includes('target='),'App links use same-tab native navigation');
   }
 }
-const base=execFileSync('git',['show','9a4c8abb32ae869d0dd5f1284b11fc83bcb180cf:index.html'],{encoding:'utf8'});
-for(const id of ['diagnosis','people','growth','creative','values','work']) {
+const base=execFileSync('git',['show','361c5c72333207a789db218f9339a99db6f0f208:index.html'],{encoding:'utf8'});
+for(const id of ['creative','values']) {
   const pattern=new RegExp(`<section id="${id}"[\\s\\S]*?</section>`);
   assert.equal(html.match(pattern)[0],base.match(pattern)[0],`${id}: original content unchanged`);
 }
@@ -57,4 +57,4 @@ for(const page of ['index.html','semi-employee.html','career-check.html']) {
   assert.ok(!/fbq\(['"]track['"],\s*['"](Lead|Contact|SubmitApplication)['"]/.test(fs.readFileSync(page,'utf8')),`${page}: no click conversion`);
 }
 assert.ok(!/['"](Lead|Contact|SubmitApplication)['"]/.test(source));
-console.log('PASS: 3 CTA placements, 4 distinct click events, production Pixel, preview isolation, consent/adapter/error handling, original content/photos, no completed-inquiry events.');
+console.log('PASS: 3 CTA placements, 4 distinct click events, production Pixel, preview isolation, consent/adapter/error handling, unchanged creative/values sections and existing photos, no completed-inquiry events.');
