@@ -16,7 +16,7 @@ for(const page of pages){
 const home=fs.readFileSync('index.html','utf8');
 for(const value of ['中途アシスタント・第二新卒','＋ケア指名＋店販手当','24.5万〜27万円','＋歩合給＋能力給','完全週休','2027年2月','Around Happy','wellness life','https://lin.ee/7dPFevn','1FAIpQLScxNHnbmHnlhdYBWE_F89-pQ6azJjjB5BQvKXiNePSSnvg8BA'])assert.ok(home.includes(value),`Missing recruitment content: ${value}`);
 const ids=[...home.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]);assert.equal(ids.length,new Set(ids).size,'Duplicate DOM IDs');
-assert.equal((home.match(/<section\b/g)||[]).length,9,'Nine distinct sections');
+assert.equal((home.match(/<section\b/g)||[]).length,10,'Ten distinct sections');
 assert.ok(!home.includes('fbevents.js'),'Preview must not load advertising pixels');
 fs.mkdirSync('dist',{recursive:true});
 for(const page of pages){
@@ -26,4 +26,4 @@ for(const page of pages){
  fs.writeFileSync(path.join('dist',page),html);
 }
 fs.cpSync('assets','dist/assets',{recursive:true});
-console.log('Build OK: 3 pages; 9 main sections; local resources, anchors, unique IDs, recruitment content.');
+console.log('Build OK: 3 pages; 10 main sections; local resources, anchors, unique IDs, recruitment content.');

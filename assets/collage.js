@@ -13,8 +13,22 @@
   menu.addEventListener('click', e=>{if(e.target.closest('a'))closeMenu();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){closeMenu();menuButton.focus();}});
   document.addEventListener('click',e=>{if(!menu.hidden&&!e.target.closest('.header'))closeMenu();});
-  document.querySelectorAll('a[href="#stylist"]').forEach(a=>a.addEventListener('click',()=>{document.querySelector('#stylist').open=true;}));
-  if(location.hash==='#stylist')document.querySelector('#stylist').open=true;
+  const diagnosisDetails=document.querySelector('#diagnosis-details');
+  document.querySelectorAll('a[href="#diagnosis"]').forEach(a=>a.addEventListener('click',()=>{diagnosisDetails.open=true;}));
+  if(location.hash==='#diagnosis')diagnosisDetails.open=true;
+  // Keep consultation available while reading, without duplicating the visible buttons.
+  const sticky=document.querySelector('.consultation-sticky');
+  const heroActions=document.querySelector('.hero-actions'),entryActions=document.querySelector('.entry-actions');
+  function updateSticky(){
+    const heroRect=heroActions.getBoundingClientRect(),entryRect=entryActions.getBoundingClientRect();
+    const entryVisible=entryRect.top<innerHeight && entryRect.bottom>0;
+    sticky.hidden=heroRect.bottom>0 || entryVisible;
+  }
+  if('IntersectionObserver' in window){
+    const ctaObserver=new IntersectionObserver(updateSticky,{threshold:[0,1]});
+    ctaObserver.observe(heroActions);ctaObserver.observe(entryActions);updateSticky();
+    addEventListener('resize',updateSticky);
+  }
   const reveals=document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window && !reduced.matches){document.documentElement.classList.add('motion-ready');const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');observer.unobserve(e.target);}}),{threshold:.06});reveals.forEach(el=>observer.observe(el));}
   const layers=[...document.querySelectorAll('[data-parallax]')];let raf=0;
