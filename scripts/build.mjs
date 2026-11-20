@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
-const pages=['index.html','semi-employee.html','career-check.html'];
+const pages=['index.html','semi-employee.html','career-check.html','beautician-type.html'];
 for(const page of pages){
  const html=fs.readFileSync(page,'utf8');
  assert.equal((html.match(/<h1[\s>]/g)||[]).length,1,`${page}: one H1`);
@@ -26,4 +26,4 @@ for(const page of pages){
  fs.writeFileSync(path.join('dist',page),html);
 }
 fs.cpSync('assets','dist/assets',{recursive:true});
-console.log('Build OK: 3 pages; 10 main sections; local resources, anchors, unique IDs, recruitment content.');
+console.log('Build OK: 4 pages; 10 main sections; local resources, anchors, unique IDs, recruitment content.');

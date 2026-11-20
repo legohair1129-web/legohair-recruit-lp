@@ -9,6 +9,12 @@
     salon_tour_click: ['RecruitFormClick', 'Google Forms'],
     instagram_profile_click: ['RecruitInstagramProfileClick', 'Instagram profile']
   };
+  const quizEvents = {
+    diagnosis_line_click: ['RecruitDiagnosisLineClick', 'outbound_click'],
+    beautician_quiz_start: ['RecruitDiagnosisStart', 'start'],
+    beautician_quiz_complete: ['RecruitDiagnosisComplete', 'complete'],
+    diagnosis_lp_click: ['RecruitDiagnosisLPClick', 'outbound_click']
+  };
   const placements = new Set(['hero', 'entry', 'sticky', 'qr']);
   const adapterActive = () => window.LEGOHAIR_ANALYTICS_CONSENT === true && typeof window.LEGOHAIR_ANALYTICS_ADAPTER === 'function';
   const allowed = () => production && window.LEGOHAIR_ANALYTICS_CONSENT !== false && navigator.globalPrivacyControl !== true;
@@ -26,7 +32,13 @@
     window.dispatchEvent(new CustomEvent('legohair:analytics', { detail: payload }));
     try {
       if (adapterActive()) { window.LEGOHAIR_ANALYTICS_ADAPTER(payload); return; }
-      if (!allowed() || typeof window.fbq !== 'function' || !events[event]) return;
+      if (!allowed() || typeof window.fbq !== 'function') return;
+      if (Object.hasOwn(quizEvents, event)) {
+        const [name, interaction] = quizEvents[event];
+        window.fbq('trackCustom', name, { page: 'beautician_quiz', interaction });
+        return;
+      }
+      if (!events[event]) return;
       const [name, destination] = events[event];
       // Only categorical context. Never send message text or diagnosis answers.
       window.fbq('trackCustom', name, {

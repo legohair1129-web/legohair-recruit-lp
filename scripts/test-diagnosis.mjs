@@ -1,11 +1,53 @@
-import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';
-const ctx={window:{}};vm.runInNewContext(fs.readFileSync('assets/beautician-data.js','utf8'),ctx);
-const data=ctx.window.beauticianData;
-assert.equal(data.questions.length,5);assert.equal(Object.keys(data.results).length,4);
-const js=fs.readFileSync('assets/collage.js','utf8');const functionText=js.match(/function resultKey\(values\)\{.*?return top;\}/)[0];vm.runInNewContext(functionText+'; window.resultKey=resultKey;',ctx);
-const types=['creative','empathy','proposal','growth'];let checked=0;
-for(let i=0;i<4**5;i++){let n=i;const answers=Array.from({length:5},()=>{const t=types[n%4];n=Math.floor(n/4);return t;});
- const frequency=Object.fromEntries(types.map(t=>[t,answers.filter(x=>x===t).length]));const highest=Math.max(...Object.values(frequency));const expected=answers.find(t=>frequency[t]===highest);
- assert.equal(ctx.window.resultKey(answers),expected,JSON.stringify(answers));checked++;
+import fs from 'node:fs';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+
+const ctx = { window: {} };
+vm.runInNewContext(fs.readFileSync('assets/beautician-data.js', 'utf8'), ctx);
+const { questions, profiles, axes, links, resultKey } = ctx.window.beauticianData;
+const home = fs.readFileSync('index.html', 'utf8');
+assert.equal(questions.length, 12);
+assert.equal(Object.keys(profiles).length, 16);
+for (const { pair } of axes) {
+  const matching = questions.filter(q => q.choices.every(c => pair.includes(c.pole)));
+  assert.equal(matching.length, 3);
+  for (const q of matching) assert.equal(new Set(q.choices.map(c => c.pole)).size, 2);
 }
-console.log(`PASS: ${checked} possible answer sequences, including first-appearance tie resolution.`);
+const distribution = new Map();
+for (let mask = 0; mask < 2 ** questions.length; mask++) {
+  const answers = questions.map((q, i) => q.choices[(mask >> i) & 1].pole);
+  const expected = axes.map(({ pair }) => [...pair].find(pole => answers.filter(x => x === pole).length > 1)).join('');
+  const code = resultKey(answers);
+  assert.equal(code, expected);
+  assert.ok(profiles[code]);
+  distribution.set(code, (distribution.get(code) ?? 0) + 1);
+}
+assert.equal(distribution.size, 16);
+for (const count of distribution.values()) assert.equal(count, 256);
+assert.equal(resultKey([]), null);
+assert.equal(resultKey(Array(12).fill('E')), null);
+for (const [title, description, practice, section] of Object.values(profiles)) {
+  assert.ok(title && description && practice && links[section]);
+  assert.ok(home.includes('id="' + section + '"'));
+}
+assert.ok(home.includes('href="beautician-type.html?entry=ad"'));
+console.log('PASS: all 4096 answer sequences, 16 reachable profiles, result links and campaign entry.');
+
+const events = [];
+const analytics = {
+  window: { fbq: (...args) => events.push(args), dispatchEvent() {} },
+  location: { hostname: 'legohair-recruit-lp.vercel.app' },
+  navigator: {},
+  CustomEvent: class {}
+};
+vm.runInNewContext(fs.readFileSync('assets/recruit-analytics.js', 'utf8'), analytics);
+for (const [event, name] of Object.entries({
+  diagnosis_line_click: 'RecruitDiagnosisLineClick', beautician_quiz_start: 'RecruitDiagnosisStart',
+  beautician_quiz_complete: 'RecruitDiagnosisComplete', diagnosis_lp_click: 'RecruitDiagnosisLPClick'
+})) {
+  analytics.window.LEGOHAIR_TRACK(event, 'quiz');
+  const [method, sentName, fields] = events.at(-1);
+  assert.equal(method, 'trackCustom');
+  assert.equal(sentName, name);
+  assert.deepEqual(Object.keys(fields).sort(), ['interaction', 'page']);
+}
