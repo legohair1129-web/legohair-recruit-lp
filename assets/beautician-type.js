@@ -3,7 +3,7 @@
   const { axes, questions, profiles, links, resultKey } = window.beauticianData;
   const panel = document.querySelector('#panel');
   const adEntry = new URLSearchParams(location.search).get('entry') === 'ad';
-  const storageKey = 'legohair:type-quiz:v1';
+  const storageKey = 'legohair:type-quiz:v2';
   const lineVisitKey = 'legohair:type-line-opened:v1';
   let answers = [];
   let position = 0;
@@ -55,6 +55,7 @@
     window.scrollTo(0, 0);
   }
   function start() {
+    document.body.classList.remove('has-result');
     answers = [];
     position = 0;
     persist();
@@ -127,13 +128,13 @@
     if (position > 0) {
       form.append(button('前の質問に戻る', 'quiet', () => { position--; persist(); renderQuestion(); }));
     }
-    panel.replaceChildren(counter, progress, heading, form);
+    panel.replaceChildren(counter, progress, heading, tag('p', '普段の自分に近い方を選んでください。', 'prompt-tip'), form);
     focusTitle(heading);
   }
   function renderResult() {
     const code = resultKey(answers);
     if (!code) { start(); return; }
-    document.body.classList.add('in-quiz');
+    document.body.classList.add('in-quiz', 'has-result');
     const [title, description, practice, section] = profiles[code];
     const heading = tag('h1', title);
     const example = tag('div', '', 'practice');
@@ -142,9 +143,18 @@
     summary.setAttribute('aria-label', '回答から見えた4つの傾向');
     for (const [i, axis] of axes.entries()) {
       const row = tag('div');
-      row.append(tag('dt', axis.name), tag('dd', axis[code[i]]));
+      row.append(tag('dt', code[i] + ' ｜ ' + axis.name), tag('dd', axis[code[i]]));
       summary.append(row);
     }
+    const salon = tag('section', '', 'salon-tip');
+    salon.append(tag('h2', '見学で聞いてみたいこと'));
+    const visits = {
+      EJ: '「みんなで目標を共有する時間はありますか？」朝礼や練習会で、誰と何を話すか聞いてみて。',
+      EP: '「営業中に相談したいとき、スタッフ同士でどう声をかけていますか？」日々のやり取りを聞いてみて。',
+      IJ: '「練習の予定と振り返りは、いつ相談できますか？」落ち着いて準備できる時間があるか聞いてみて。',
+      IP: '「自分で見つけた課題は、どんなふうに練習できますか？」一人で試した後の相談方法も聞いてみて。'
+    };
+    salon.append(tag('p', visits[code[0] + code[3]]));
     const related = link(links[section], 'index.html#' + section, 'action');
     const conditions = link('募集職種・給与・働き方を見る', 'index.html#work', 'quiet');
     for (const destination of [related, conditions]) {
@@ -153,8 +163,8 @@
     const again = button('もう一度診断する', 'quiet', start);
     const end = tag('div', '', 'note');
     end.append(again);
-    panel.replaceChildren(tag('p', 'あなたの美容師タイプ', 'overline'), heading, tag('p', description),
-      example, summary, related, conditions, end);
+    panel.replaceChildren(tag('p', 'あなたの美容師タイプ ／ LEGOHAIR独自診断', 'overline'), tag('p', code, 'type-code'), heading, tag('p', description),
+      example, summary, salon, related, conditions, end);
     focusTitle(heading);
   }
 
